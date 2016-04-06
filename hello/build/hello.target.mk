@@ -29,8 +29,6 @@ CFLAGS_C_Debug := \
 # Flags passed to only C++ files.
 CFLAGS_CC_Debug := \
 	-std=gnu++0x \
-	-fno-rtti \
-	-fno-exceptions \
 	-fno-threadsafe-statics \
 	-fno-strict-aliasing
 
@@ -44,7 +42,9 @@ INCS_Debug := \
 	-I/Users/roychen/.node-gyp/5.8.0/include/node \
 	-I/Users/roychen/.node-gyp/5.8.0/src \
 	-I/Users/roychen/.node-gyp/5.8.0/deps/uv/include \
-	-I/Users/roychen/.node-gyp/5.8.0/deps/v8/include
+	-I/Users/roychen/.node-gyp/5.8.0/deps/v8/include \
+	-I/Users/roychen/Dev/node-c/hello/mysql-connector/include \
+	-I/usr/local/include
 
 DEFS_Release := \
 	'-DNODE_GYP_MODULE_NAME=hello' \
@@ -71,8 +71,6 @@ CFLAGS_C_Release := \
 # Flags passed to only C++ files.
 CFLAGS_CC_Release := \
 	-std=gnu++0x \
-	-fno-rtti \
-	-fno-exceptions \
 	-fno-threadsafe-statics \
 	-fno-strict-aliasing
 
@@ -86,7 +84,9 @@ INCS_Release := \
 	-I/Users/roychen/.node-gyp/5.8.0/include/node \
 	-I/Users/roychen/.node-gyp/5.8.0/src \
 	-I/Users/roychen/.node-gyp/5.8.0/deps/uv/include \
-	-I/Users/roychen/.node-gyp/5.8.0/deps/v8/include
+	-I/Users/roychen/.node-gyp/5.8.0/deps/v8/include \
+	-I/Users/roychen/Dev/node-c/hello/mysql-connector/include \
+	-I/usr/local/include
 
 OBJS := \
 	$(obj).target/$(TARGET)/src/hello.o
@@ -139,7 +139,8 @@ LIBTOOLFLAGS_Release := \
 	-undefined dynamic_lookup \
 	-Wl,-search_paths_first
 
-LIBS :=
+LIBS := \
+	/Users/roychen/Dev/node-c/hello/mysql-connector/lib/libmysqlcppconn-static.a
 
 $(builddir)/hello.node: GYP_LDFLAGS := $(LDFLAGS_$(BUILDTYPE))
 $(builddir)/hello.node: LIBS := $(LIBS)

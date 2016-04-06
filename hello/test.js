@@ -1,7 +1,9 @@
 var addon = require('./build/Release/hello.node');
 
-console.log(addon.hello());
-addon.callback((msg) => {
-	console.log(msg);
+addon.conn({
+	ip: '127.0.0.1', 
+	port: 3306
+}, (err, conn) => {
+	console.log(err);
+	console.log(conn);
 });
-console.log(addon.add(1, 1.11));
